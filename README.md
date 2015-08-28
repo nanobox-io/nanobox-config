@@ -10,7 +10,8 @@ The resultant map contains defaults specified in the code, replacements from the
 package main
 
 import (
-  "github.com/pagodabox/na-config" config
+  config "github.com/pagodabox/nanobox-config"
+  "os"
 )
 
 func main() {
@@ -18,8 +19,8 @@ func main() {
     "default": "true",
     "key": "old"
   }
-  config.Load(defaults)
-  fmt.Printf("%v\n", config.all())
+  config.Load(defaults, os.Args[1])
+  fmt.Printf("%v\n", config.Config)
 }
 ```
 
@@ -27,7 +28,7 @@ func main() {
 ```bash
 $ cat > ./test.config <<EOF
 # this is an example config file
-path=testing
+path testing
 EOF
 $ ./program ./test.config -key=value
 {
