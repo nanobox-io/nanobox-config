@@ -48,7 +48,7 @@ func Load(defaults map[string]string, file string) error {
 			case strings.HasPrefix(line, "#"): // comment
 			case len(line) == 0: // empty line
 			default:
-				key, value, err := parseArg(line)
+				key, value, err := parseArg(line, " ")
 				if err != nil {
 					return err
 				}
@@ -71,13 +71,13 @@ func Load(defaults map[string]string, file string) error {
 func check(arg string) (string, string, error) {
 	if strings.HasPrefix(arg, "-") {
 		arg = strings.TrimPrefix(arg, "-")
-		return parseArg(arg)
+		return parseArg(arg, "=")
 	}
 	return "", "", errors.New("not a config parameter")
 }
 
-func parseArg(arg string) (string, string, error) {
-	fields := strings.SplitN(arg, " ", 2)
+func parseArg(arg, sep string) (string, string, error) {
+	fields := strings.SplitN(arg, sep, 2)
 	if len(fields) != 2 {
 		return "", "", errors.New("bad config file")
 	}
