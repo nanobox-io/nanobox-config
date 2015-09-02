@@ -77,7 +77,7 @@ func check(arg string) (string, string, error) {
 }
 
 func parseArg(arg string) (string, string, error) {
-	fields := strings.SplitN(arg, 2)
+	fields := strings.SplitN(arg, " ", 2)
 	if len(fields) != 2 {
 		return "", "", errors.New("bad config file")
 	}
