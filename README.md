@@ -10,7 +10,7 @@ The resultant map contains defaults specified in the code, replacements from the
 package main
 
 import (
-  config "github.com/pagodabox/nanobox-config"
+  config "github.com/nanobox-io/nanobox-config"
   "os"
 )
 
