@@ -81,5 +81,5 @@ func parseArg(arg, sep string) (string, string, error) {
 	if len(fields) != 2 {
 		return "", "", errors.New("bad config file")
 	}
-	return fields[0], fields[2], nil
+	return fields[0], fields[1], nil
 }
